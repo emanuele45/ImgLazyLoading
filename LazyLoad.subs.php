@@ -39,3 +39,8 @@ function img_lazy_loading_scripts()
 		$(".lazyload").lazyload();
 	});');
 }
+
+function img_lazy_loading_credits(&$credits)
+{
+	$credits['credits_software_graphics']['software'][] = '<a href="http://www.appelsiini.net/projects/lazyload">Lazy Load Plugin for jQuery</a> | &copy; Mika Tuupola | Licensed under <a href="http://www.opensource.org/licenses/mit-license.php">The MIT License (MIT)</a>';
+}
