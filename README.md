@@ -9,5 +9,5 @@ I'm not sure it doesn't break anything.
 Uses the [Lazy Load Plugin for jQuery](http://www.appelsiini.net/projects/lazyload)
 
 ###License
-This Modifications Source Code is subject to the terms of [The BSD License](http://opensource.org/licenses/BSD-3-Clause)
+This Modifications Source Code is subject to the terms of [The BSD License](http://opensource.org/licenses/BSD-3-Clause)<br>
 The Lazy Load Plugin for jQuery is licensed under [The MIT License (MIT)](http://www.opensource.org/licenses/mit-license.php)
