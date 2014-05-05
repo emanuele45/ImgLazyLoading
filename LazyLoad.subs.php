@@ -33,7 +33,7 @@ function img_lazy_loading_buffer($buffer)
 
 function img_lazy_loading_scripts()
 {
-	loadJavascriptFile('jquery.lazyload.js');
+	loadJavascriptFile('jquery.lazyload.min.js');
 	addInlineJavascript('
 	$(document).ready(function() {
 		$(".lazyload").lazyload();
