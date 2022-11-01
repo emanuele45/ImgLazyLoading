@@ -6,15 +6,22 @@
  * @author  emanuele
  * @license BSD http://opensource.org/licenses/BSD-3-Clause
  *
- * @version 0.0.2
+ * @version 0.0.3
  */
 
 function img_lazy_loading_buffer($buffer)
 {
 	if (isset($_REQUEST['xml']) || isset($_REQUEST['api']))
+	{
 		return $buffer;
+	}
 
-	return preg_replace_callback('~<img ([^>]*)/>~is', function($m) {
+	return preg_replace_callback('~<img [^>]*/>~i', static function ($m) {
+		if (strpos($m[0], 'loading="lazy"') !== false || strpos($m[0], 'admin_img_') !== false)
+		{
+			return $m[0];
+		}
+
 		$img = strtr($m[0], array(' src="' => ' data-original="'));
 		if (strpos($img, 'class="') === false)
 		{
@@ -33,7 +40,7 @@ function img_lazy_loading_buffer($buffer)
 
 function img_lazy_loading_scripts()
 {
-	loadJavascriptFile('jquery.lazyload.min.js');
+	loadJavascriptFile('jquery.lazyload.min.js', array('defer' => true));
 	addInlineJavascript('
 	$(document).ready(function() {
 		$(".lazyload").lazyload();
@@ -42,5 +49,5 @@ function img_lazy_loading_scripts()
 
 function img_lazy_loading_credits(&$credits)
 {
-	$credits['credits_software_graphics']['software'][] = '<a href="http://www.appelsiini.net/projects/lazyload">Lazy Load Plugin for jQuery</a> | &copy; Mika Tuupola | Licensed under <a href="http://www.opensource.org/licenses/mit-license.php">The MIT License (MIT)</a>';
+	$credits['credits_software_graphics']['software'][] = '<a href="https://www.appelsiini.net/projects/lazyload">Lazy Load Plugin for jQuery</a> | &copy; Mika Tuupola | Licensed under <a href="https://www.opensource.org/licenses/mit-license.php">The MIT License (MIT)</a>';
 }
